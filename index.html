@@ -4,14 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TVBinger — find what's worth watching, skip intros, watch parties on Netflix, Prime &amp; more</title>
-<meta name="description" content="TVBinger is a free Chrome extension that helps you find what's worth watching with IMDb, Rotten Tomatoes and Metacritic ratings on Netflix, Prime Video, Disney+, HBO Max and JioHotstar — plus skip-intro, binge controls and synced watch parties with voice & video chat." />
+<meta name="description" content="TVBinger is a free Chrome extension that helps you find what's worth watching with IMDb, Rotten Tomatoes and Metacritic ratings on Netflix, Prime Video, Disney+, HBO Max and JioHotstar — plus skip-intro, seek controls and synced watch parties with voice & video chat." />
 
 <!-- Open Graph / Twitter Card — rich previews when this page is shared.
-     This file is the SOURCE copy; it's mirrored/published to the separate
-     public "tvbinger-site" repo (the main "tvbinger" repo is private, and
-     GitHub Pages needs a paid plan for Pages on private repos — a dedicated
-     public repo sidesteps that for free). og:image uses a relative path
-     (og-image.png, copied alongside this file in both repos). -->
+     This file is the SOURCE copy, maintained in the private extension repo and
+     published as-is to the standalone public "tvbinger-site" repo, which hosts
+     it at the URL below via GitHub Pages. -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="TVBinger — find what's worth watching, skip intros, watch parties" />
 <meta property="og:description" content="IMDb, Rotten Tomatoes &amp; Metacritic ratings, skip-intro, seek controls, and synced watch parties with voice &amp; video — on Netflix, Prime Video, Disney+, HBO Max &amp; JioHotstar." />
@@ -53,11 +51,11 @@
   }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 16px; }
   .brand svg { width: 28px; height: 28px; }
-  nav.top a.gh {
-    color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 600;
-    border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px;
+  .nav-cta {
+    color: #fff; text-decoration: none; font-size: 13px; font-weight: 700;
+    background: var(--red); padding: 9px 16px; border-radius: 8px;
   }
-  nav.top a.gh:hover { color: var(--text); border-color: #444; }
+  .nav-cta:hover { background: var(--red-dark); }
 
   /* Hero */
   header.hero { text-align: center; padding: 60px 24px 40px; }
@@ -74,7 +72,7 @@
   .btn.primary:hover { background: var(--red-dark); }
   .btn.secondary { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); }
   .btn.secondary:hover { border-color: #555; }
-  .btn-note { display: block; margin-top: 8px; font-size: 12px; color: var(--text-dim); }
+  .btn-note { display: block; margin-top: 10px; font-size: 12px; color: var(--text-dim); }
 
   /* Sections */
   section { padding: 56px 0; border-top: 1px solid var(--border); }
@@ -88,45 +86,24 @@
   .feature h3 { margin: 0 0 6px; font-size: 16px; }
   .feature p { margin: 0; color: var(--text-dim); font-size: 14px; }
 
-  /* Demo mockups */
-  .demo-block { margin-bottom: 40px; }
-  .demo-block:last-child { margin-bottom: 0; }
-  .demo-label { font-size: 13px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; text-align: center; }
+  /* Screenshots */
+  .shots { display: flex; flex-direction: column; gap: 40px; }
+  .shot-label { font-size: 13px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; text-align: center; }
+  .shot img {
+    display: block; width: 100%; border-radius: 14px; border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
 
-  /* mock carousel */
-  .mock-row { display: flex; gap: 10px; overflow-x: auto; padding: 4px; }
-  .mock-card {
-    position: relative; flex: 0 0 120px; height: 170px; border-radius: 8px;
-    background: linear-gradient(160deg, #333, #1a1a1a);
-    display: flex; align-items: flex-end; padding: 8px;
-  }
-  .mock-card.dim::after {
-    content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.82);
-    backdrop-filter: blur(2px); border-radius: inherit;
-  }
-  .mock-badge {
-    position: absolute; top: 6px; left: 6px; z-index: 2;
-    background: rgba(0,0,0,0.78); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 5px; padding: 3px 6px; font-size: 10px; font-weight: 700;
-  }
-  .mock-title { font-size: 11px; color: #ccc; z-index: 1; }
+  /* Platform grid */
+  .platforms { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+  .platform { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-align: center; }
+  .platform .pname { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+  .platform .pbadge { display: inline-block; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 12px; }
+  .platform .pbadge.full { background: rgba(46,204,113,0.15); color: #2ecc71; }
+  .platform .pbadge.beta { background: rgba(245,197,24,0.15); color: var(--gold); }
+  .platforms-note { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 20px; }
 
-  /* mock popup */
-  .mock-popup {
-    width: 280px; margin: 0 auto; background: var(--panel); border: 1px solid var(--border);
-    border-radius: 14px; padding: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  }
-  .mock-popup .logo-chip { display: flex; gap: 6px; margin-bottom: 12px; }
-  .mock-popup .n { background: var(--red); color: #fff; font-weight: 900; font-size: 14px; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
-  .mock-popup .imdb { background: var(--gold); color: #000; font-weight: 900; font-size: 10px; padding: 3px 5px; border-radius: 4px; }
-  .mock-popup h4 { margin: 0 0 4px; font-size: 14px; }
-  .mock-popup p { margin: 0 0 14px; font-size: 11px; color: var(--text-dim); }
-  .mock-slider { height: 4px; background: var(--border); border-radius: 2px; position: relative; margin-bottom: 14px; }
-  .mock-slider::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 45%; background: var(--red); border-radius: 2px; }
-  .mock-slider::after { content: ''; position: absolute; left: 45%; top: 50%; transform: translate(-50%,-50%); width: 12px; height: 12px; background: var(--red); border-radius: 50%; }
-  .mock-btn { background: var(--red); color: #fff; text-align: center; padding: 9px; border-radius: 6px; font-size: 12px; font-weight: 700; }
-
-  /* how it works */
+  /* Steps (get started + start a party) */
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
   .step { text-align: center; }
   .step .num {
@@ -135,6 +112,8 @@
   }
   .step h4 { margin: 0 0 6px; font-size: 15px; }
   .step p { margin: 0; color: var(--text-dim); font-size: 13px; }
+  .subsection-title { font-size: 15px; font-weight: 700; color: var(--text); margin: 44px 0 20px; text-align: center; }
+  .subsection-title:first-of-type { margin-top: 0; }
 
   /* FAQ */
   .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
@@ -159,72 +138,85 @@
     <svg viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#E50914" stroke="#B4060F" stroke-width="2"/><polygon points="50,10 61.76,33.82 88.04,37.64 69.02,56.18 73.51,82.36 50,70 26.49,82.36 30.98,56.18 11.96,37.64 38.24,33.82" fill="#F5C518"/></svg>
     TVBinger
   </div>
-  <a class="gh" href="https://github.com/williamscott701/tvbinger" target="_blank" rel="noopener">GitHub ↗</a>
+  <a class="nav-cta" href="https://chromewebstore.google.com/detail/ojnaeameimeelpfnmfkfkcpnknohpkmb" target="_blank" rel="noopener">Add to Chrome</a>
 </nav>
 
 <header class="hero">
   <svg class="logo" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#E50914" stroke="#B4060F" stroke-width="2"/><polygon points="50,10 61.76,33.82 88.04,37.64 69.02,56.18 73.51,82.36 50,70 26.49,82.36 30.98,56.18 11.96,37.64 38.24,33.82" fill="#F5C518"/></svg>
   <h1>TVBinger</h1>
   <p class="tagline">Find it. Watch it together.</p>
-  <p class="sub">A free Chrome extension that overlays IMDb, Rotten Tomatoes and Metacritic ratings
-    onto Netflix, Prime Video, Disney+, HBO Max and JioHotstar — with skip-intro, binge controls,
-    and synced watch parties with voice &amp; video chat.</p>
+  <p class="sub">IMDb, Rotten Tomatoes and Metacritic ratings on every thumbnail — plus the
+    playback controls streaming apps forgot, and watch parties with voice &amp; video so
+    you never watch alone. On Netflix, Prime Video, Disney+, HBO Max &amp; JioHotstar.</p>
   <div class="cta-row">
-    <a class="btn primary" href="https://github.com/williamscott701/tvbinger#install" target="_blank" rel="noopener">Install from GitHub</a>
-    <a class="btn secondary" href="#how">See how it works</a>
+    <a class="btn primary" href="https://chromewebstore.google.com/detail/ojnaeameimeelpfnmfkfkcpnknohpkmb" target="_blank" rel="noopener">➕ Add to Chrome — it's free</a>
+    <a class="btn secondary" href="#shots">See it in action</a>
   </div>
-  <span class="btn-note">Not yet on the Chrome Web Store — install from source takes under a minute.</span>
+  <span class="btn-note">No account required. Works alongside your existing Netflix, Prime Video, Disney+, HBO Max and JioHotstar logins.</span>
 </header>
 
 <section class="wrap">
-  <h2>What it does</h2>
+  <h2>What you get</h2>
   <p class="lead">Everything shows up right where you're already browsing. No new tabs, no copy-pasting titles into IMDb.</p>
   <div class="features">
     <div class="feature"><div class="icon">⭐</div><h3>Rating badges</h3><p>On every carousel thumbnail, the video player, and hover-preview cards.</p></div>
-    <div class="feature"><div class="icon">🍅</div><h3>Multiple sources</h3><p>IMDb always, plus optional Rotten Tomatoes and Metacritic — all from your one OMDb key.</p></div>
-    <div class="feature"><div class="icon">🎚️</div><h3>Filters</h3><p>Set a minimum rating, RT %, Metascore, vote count, or awards bar. Anything that doesn't qualify gets dimmed right on the page.</p></div>
+    <div class="feature"><div class="icon">🍅</div><h3>Multiple sources</h3><p>IMDb always, plus optional Rotten Tomatoes and Metacritic — all from your one free key.</p></div>
+    <div class="feature"><div class="icon">🎚️</div><h3>Quality filters</h3><p>Set a minimum rating, RT %, Metascore, vote count, or awards bar. Anything that doesn't qualify gets dimmed right on the page.</p></div>
     <div class="feature"><div class="icon">⏭️</div><h3>Skip intro &amp; recap</h3><p>Auto-clicks the site's own skip buttons the moment they appear. Off by default, never fights you.</p></div>
-    <div class="feature"><div class="icon">↩️</div><h3>Quick rewind</h3><p>A one-tap 10-second "what did they just say?" button floating over the player.</p></div>
+    <div class="feature"><div class="icon">↔️</div><h3>On-screen seek bar</h3><p>Jump −30/−20/−10/+10/+20/+30 seconds with one tap — pick exactly which buttons you want.</p></div>
     <div class="feature"><div class="icon">⏱️</div><h3>Binge controls</h3><p>Auto-play next episode, and a "stop after N episodes" nudge that checks in before the binge rolls on.</p></div>
     <div class="feature"><div class="icon">👥</div><h3>Watch parties</h3><p>Play, pause and seek in lockstep with friends. One invite link, no accounts — rooms self-destruct when everyone leaves.</p></div>
-    <div class="feature"><div class="icon">🎙️</div><h3>Voice &amp; video chat</h3><p>Talk while you watch — peer-to-peer WebRTC for up to 6 people, right in the party panel.</p></div>
+    <div class="feature"><div class="icon">🎙️</div><h3>Voice &amp; video chat</h3><p>Talk while you watch — peer-to-peer, up to 6 people, right in the party panel.</p></div>
+    <div class="feature"><div class="icon">🖥️</div><h3>Pin-to-side split screen</h3><p>Dock the video call to a rail and let the movie reflow beside it — faces never cover the film.</p></div>
   </div>
 </section>
 
-<section class="wrap" id="how">
+<section class="wrap" id="shots">
   <h2>See it in action</h2>
-  <p class="lead">Illustrative mockups — not real Netflix screenshots.</p>
-
-  <div class="demo-block">
-    <div class="demo-label">Carousel row with filters applied</div>
-    <div class="mock-row">
-      <div class="mock-card"><span class="mock-badge">⭐ 8.7 🏆</span></div>
-      <div class="mock-card dim"><span class="mock-badge">⭐ 5.2</span></div>
-      <div class="mock-card"><span class="mock-badge">⭐ 7.9</span></div>
-      <div class="mock-card dim"><span class="mock-badge">⭐ 4.8</span></div>
-      <div class="mock-card"><span class="mock-badge">⭐ 8.1 🏆</span></div>
+  <p class="lead">Real screenshots — this is exactly what shows up on the page.</p>
+  <div class="shots">
+    <div class="shot">
+      <div class="shot-label">Watch party — synced playback, split-screen video call</div>
+      <img src="screenshot-party.png" alt="TVBinger watch party with a pinned video call rail and on-screen seek bar over the video player" loading="lazy" />
     </div>
-  </div>
-
-  <div class="demo-block">
-    <div class="demo-label">The popup</div>
-    <div class="mock-popup">
-      <div class="logo-chip"><div class="n">N</div><div class="imdb">IMDb</div></div>
-      <h4>TVBinger</h4>
-      <p>IMDb ratings, votes and awards on every Netflix and Prime Video card.</p>
-      <p style="margin-bottom:6px; color:#aaa;">Min IMDb Rating &nbsp; <span style="float:right;color:#F5C518;font-weight:700;">7.0+</span></p>
-      <div class="mock-slider"></div>
-      <div class="mock-btn">Apply Filters</div>
+    <div class="shot">
+      <div class="shot-label">Ratings on every card, weak titles dimmed</div>
+      <img src="screenshot-ratings.png" alt="TVBinger rating badges with IMDb, Rotten Tomatoes and Metacritic scores on a carousel, with low-rated titles dimmed" loading="lazy" />
+    </div>
+    <div class="shot">
+      <div class="shot-label">Everything in one click, from the toolbar</div>
+      <img src="screenshot-popup.png" alt="TVBinger popup showing watch party controls, quality filters, and playback settings" loading="lazy" />
     </div>
   </div>
 </section>
 
 <section class="wrap">
-  <h2>How it works</h2>
+  <h2>Works on 5 platforms</h2>
+  <div class="platforms">
+    <div class="platform"><div class="pname">Netflix</div><span class="pbadge full">Full support</span></div>
+    <div class="platform"><div class="pname">Prime Video</div><span class="pbadge full">Full support</span></div>
+    <div class="platform"><div class="pname">Disney+</div><span class="pbadge beta">Beta</span></div>
+    <div class="platform"><div class="pname">HBO Max</div><span class="pbadge beta">Beta</span></div>
+    <div class="platform"><div class="pname">JioHotstar</div><span class="pbadge beta">Beta</span></div>
+  </div>
+  <p class="platforms-note">Beta = we're still tuning it against those sites' layouts — features degrade gracefully rather than breaking the page.</p>
+</section>
+
+<section class="wrap" id="how">
+  <h2>Get started</h2>
+
+  <div class="subsection-title">Set up in under a minute</div>
   <div class="steps">
-    <div class="step"><div class="num">1</div><h4>Detects the title</h4><p>A content script reads whatever's currently on screen on Netflix or Prime Video.</p></div>
-    <div class="step"><div class="num">2</div><h4>Looks it up on OMDb</h4><p>Your own free API key fetches the IMDb rating, votes, and awards for that title.</p></div>
-    <div class="step"><div class="num">3</div><h4>Shows it, live</h4><p>A badge appears on the page instantly — and filters dim anything that doesn't meet your bar.</p></div>
+    <div class="step"><div class="num">1</div><h4>Add to Chrome</h4><p>One click from the Chrome Web Store — free, no account.</p></div>
+    <div class="step"><div class="num">2</div><h4>Paste a free OMDb key</h4><p>Click the toolbar icon, grab a free key (~1,000 lookups/day), paste it in.</p></div>
+    <div class="step"><div class="num">3</div><h4>Ratings show up, live</h4><p>Browse Netflix or Prime — badges appear instantly, filters dim what doesn't qualify.</p></div>
+  </div>
+
+  <div class="subsection-title">Start a watch party</div>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><h4>Open something to watch</h4><p>Click the toolbar icon → Start watch party.</p></div>
+    <div class="step"><div class="num">2</div><h4>Copy the invite link</h4><p>Send it to friends — it drops them straight into your show, already in sync.</p></div>
+    <div class="step"><div class="num">3</div><h4>Join voice &amp; video</h4><p>Talk while you watch. Pin the call to the side if you like.</p></div>
   </div>
 </section>
 
@@ -260,7 +252,7 @@
     <li>No browsing history is logged, batched, or sent anywhere.</li>
     <li>No account identifiers, device identifiers, or cookies are collected.</li>
     <li>Unless you start or join a watch party (below), no domain other than <code>omdbapi.com</code> is ever contacted.</li>
-    <li>Playback features (rewind, skip intro/recap, auto-next, the stop-after-N nudge) run entirely inside your browser tab and transmit nothing.</li>
+    <li>Playback features (seek bar, skip intro/recap, auto-next, the stop-after-N nudge) run entirely inside your browser tab and transmit nothing.</li>
   </ul>
 
   <h3>Optional: watch parties</h3>
@@ -305,7 +297,7 @@
 
 <footer>
   <p>TVBinger is an independent project and is not affiliated with, endorsed by, or sponsored by Netflix, Amazon, Prime Video, Disney, Warner Bros. Discovery, JioStar, or IMDb.</p>
-  <p><a href="https://github.com/williamscott701/tvbinger" target="_blank" rel="noopener">Source on GitHub</a> · <a href="#privacy">Privacy Policy</a> · <a href="mailto:williamscott701@gmail.com">Contact</a></p>
+  <p><a href="https://chromewebstore.google.com/detail/ojnaeameimeelpfnmfkfkcpnknohpkmb" target="_blank" rel="noopener">Add to Chrome</a> · <a href="#privacy">Privacy Policy</a> · <a href="mailto:williamscott701@gmail.com">Contact</a></p>
 </footer>
 
 </body>
